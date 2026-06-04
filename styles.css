@@ -348,6 +348,7 @@ nav {
 .hero-text h1 {
   font-size: clamp(4rem, 12vw, 10rem);
   font-weight: 100;
+  font-size: 6rem;
   letter-spacing: 1rem;
   line-height: 1;
   mix-blend-mode: difference;
@@ -472,6 +473,7 @@ nav {
   scrollbar-width: none;
   flex: 1;
 }
+
 
 .gallery-container::-webkit-scrollbar {
   display: none;
