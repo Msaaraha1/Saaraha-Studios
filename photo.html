@@ -98,75 +98,96 @@
       <span class="section-title">Portfolio</span>
       <h2 class="section-heading">Selected Works</h2>
 
-      <div class="gallery-container">
-        <div class="gallery-card">
-          <img
-            src="images/photo3.jpg"
-            alt="Portrait"
-          />
-          <div class="gallery-card-overlay">
-            <span>Elegance</span>
-            <h3>Puberty function</h3>
+      <div class="gallery-wrapper">
+        <button class="gallery-nav gallery-nav-left" aria-label="Previous image">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="gallery-container">
+          <div class="gallery-card">
+            <img src="images/photo3.jpg" alt="Elegance - Puberty function" />
+            <div class="gallery-card-overlay">
+              <span>Elegance</span>
+              <h3>Puberty function</h3>
+            </div>
+            <div class="gallery-card-number">01</div>
           </div>
-          <div class="gallery-card-number">01</div>
-        </div>
-        <div class="gallery-card">
-          <img
-            src="images/photo1.jpeg"
-            alt="Mountains"
-          />
-          <div class="gallery-card-overlay">
-            <span>Portrait</span>
-            <h3>Church wedding</h3>
+          <div class="gallery-card">
+            <img src="images/photo1.jpeg" alt="Portrait - Church wedding" />
+            <div class="gallery-card-overlay">
+              <span>Portrait</span>
+              <h3>Church wedding</h3>
+            </div>
+            <div class="gallery-card-number">02</div>
           </div>
-          <div class="gallery-card-number">02</div>
-        </div>
-        <div class="gallery-card">
-          <img
-            src="images/photo6.jpeg"
-            alt="Night"
-          />
-          <div class="gallery-card-overlay">
-            <span>Baby</span>
-            <h3>Birthday shoot</h3>
+          <div class="gallery-card">
+            <img src="images/photo6.jpeg" alt="Baby - Birthday shoot" />
+            <div class="gallery-card-overlay">
+              <span>Baby</span>
+              <h3>Birthday shoot</h3>
+            </div>
+            <div class="gallery-card-number">03</div>
           </div>
-          <div class="gallery-card-number">03</div>
-        </div>
-        <div class="gallery-card">
-          <img
-            src="images/photo5.jpeg"
-            alt="Portrait"
-          />
-          <div class="gallery-card-overlay">
-            <span>Natural Light</span>
-            <h3>Pre wedding</h3>
+          <div class="gallery-card">
+            <img src="images/photo5.jpeg" alt="Natural Light - Pre wedding" />
+            <div class="gallery-card-overlay">
+              <span>Natural Light</span>
+              <h3>Pre wedding</h3>
+            </div>
+            <div class="gallery-card-number">04</div>
           </div>
-          <div class="gallery-card-number">04</div>
-        </div>
-        <div class="gallery-card">
-          <img
-            src="images/photo4.jpeg"
-            alt="Nature"
-          />
-          <div class="gallery-card-overlay">
-            <span>Charming</span>
-            <h3>Puberty function</h3>
+          <div class="gallery-card">
+            <img src="images/photo4.jpeg" alt="Charming - Puberty function" />
+            <div class="gallery-card-overlay">
+              <span>Charming</span>
+              <h3>Puberty function</h3>
+            </div>
+            <div class="gallery-card-number">05</div>
           </div>
-          <div class="gallery-card-number">05</div>
-        </div>
-        <div class="gallery-card">
-          <img
-            src="images/photo2.jpeg"
-            alt="Fashion"
-          />
-          <div class="gallery-card-overlay">
-            <span>Traditional</span>
-            <h3>Temple wedding</h3>
+          <div class="gallery-card">
+            <img src="images/photo2.jpeg" alt="Traditional - Temple wedding" />
+            <div class="gallery-card-overlay">
+              <span>Traditional</span>
+              <h3>Temple wedding</h3>
+            </div>
+            <div class="gallery-card-number">06</div>
           </div>
-          <div class="gallery-card-number">06</div>
         </div>
+        <button class="gallery-nav gallery-nav-right" aria-label="Next image">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- View More Button -->
+      <div class="gallery-view-more">
+        <button class="view-more-btn" id="viewMoreBtn">
+          View More <i class="fas fa-arrow-right"></i>
+        </button>
       </div>
     </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-close" aria-label="Close lightbox">&times;</span>
+      <div class="lightbox-content">
+        <img class="lightbox-image" src="" alt="" />
+        <div class="lightbox-caption"></div>
+      </div>
+      <button class="lightbox-prev" aria-label="Previous image">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="lightbox-next" aria-label="Next image">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Full Gallery Modal -->
+    <div class="full-gallery-modal" id="fullGalleryModal">
+      <span class="modal-close" aria-label="Close gallery">&times;</span>
+      <h2>All Works</h2>
+      <div class="full-gallery-grid" id="fullGalleryGrid">
+        <!-- Images will be populated by JavaScript -->
+      </div>
+    </div>
 
     <!-- Marquee Section -->
     <section class="marquee-section">
@@ -280,8 +301,12 @@
             </div>
           </div>
           <div class="contact-social">
-            <a href="https://www.instagram.com/saaraha_studios?igsh=MXExMjZjbGI4M21ucQ=="><i class="fab fa-instagram"></i></a>
-            <a href="https://www.facebook.com/share/1GcwtL3xS6/"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/saaraha_studios?igsh=MXExMjZjbGI4M21ucQ==">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/share/1GcwtL3xS6/">
+              <i class="fab fa-facebook"></i>
+            </a>
           </div>
         </div>
 
@@ -333,8 +358,12 @@
         <a href="#">© 2025</a>
       </div>
       <div class="social-icons">
-        <a href="https://www.instagram.com/saaraha_studios?igsh=MXExMjZjbGI4M21ucQ=="><i class="fab fa-instagram"></i></a>
-        <a href="https://www.facebook.com/share/1GcwtL3xS6/"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/saaraha_studios?igsh=MXExMjZjbGI4M21ucQ==">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/1GcwtL3xS6/">
+          <i class="fab fa-facebook"></i>
+        </a>
       </div>
     </footer>
 

@@ -125,6 +125,160 @@ galleryContainer.addEventListener("mousemove", (e) => {
   galleryContainer.scrollLeft = scrollLeft - walk;
 });
 
+// Gallery Navigation Arrows
+const galleryNavLeft = document.querySelector(".gallery-nav-left");
+const galleryNavRight = document.querySelector(".gallery-nav-right");
+
+galleryNavLeft.addEventListener("click", () => {
+  galleryContainer.scrollBy({
+    left: -300,
+    behavior: "smooth",
+  });
+});
+
+galleryNavRight.addEventListener("click", () => {
+  galleryContainer.scrollBy({
+    left: 300,
+    behavior: "smooth",
+  });
+});
+
+// Lightbox functionality
+const lightbox = document.getElementById("lightbox");
+const lightboxImage = document.querySelector(".lightbox-image");
+const lightboxCaption = document.querySelector(".lightbox-caption");
+const lightboxClose = document.querySelector(".lightbox-close");
+const lightboxPrev = document.querySelector(".lightbox-prev");
+const lightboxNext = document.querySelector(".lightbox-next");
+const galleryCards = document.querySelectorAll(".gallery-card");
+
+let currentImageIndex = 0;
+let allGalleryImages = []; // Store all images for lightbox navigation
+
+// Initialize gallery images array
+function initializeGalleryImages() {
+  allGalleryImages = Array.from(galleryCards).map((card, index) => ({
+    img: card.querySelector("img"),
+    overlay: card.querySelector(".gallery-card-overlay"),
+    index: index,
+  }));
+}
+
+initializeGalleryImages();
+
+galleryCards.forEach((card, index) => {
+  const img = card.querySelector("img");
+  img.style.cursor = "pointer";
+
+  img.addEventListener("click", () => {
+    currentImageIndex = index;
+    openLightbox(index);
+  });
+});
+
+function openLightbox(index) {
+  const imageData = allGalleryImages[index];
+  const overlay = imageData.overlay;
+  const title = overlay.querySelector("h3").textContent;
+
+  lightboxImage.src = imageData.img.src;
+  lightboxImage.alt = imageData.img.alt;
+  lightboxCaption.textContent = title;
+
+  lightbox.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeLightbox() {
+  lightbox.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+lightboxClose.addEventListener("click", closeLightbox);
+
+lightbox.addEventListener("click", (e) => {
+  if (e.target === lightbox) {
+    closeLightbox();
+  }
+});
+
+lightboxPrev.addEventListener("click", () => {
+  currentImageIndex = (currentImageIndex - 1 + allGalleryImages.length) % allGalleryImages.length;
+  openLightbox(currentImageIndex);
+});
+
+lightboxNext.addEventListener("click", () => {
+  currentImageIndex = (currentImageIndex + 1) % allGalleryImages.length;
+  openLightbox(currentImageIndex);
+});
+
+// Keyboard navigation for lightbox
+document.addEventListener("keydown", (e) => {
+  if (!lightbox.classList.contains("active")) return;
+
+  if (e.key === "Escape") {
+    closeLightbox();
+  } else if (e.key === "ArrowLeft") {
+    lightboxPrev.click();
+  } else if (e.key === "ArrowRight") {
+    lightboxNext.click();
+  }
+});
+
+// Full Gallery Modal
+const fullGalleryModal = document.getElementById("fullGalleryModal");
+const modalClose = document.querySelector(".modal-close");
+const fullGalleryGrid = document.getElementById("fullGalleryGrid");
+const viewMoreBtn = document.getElementById("viewMoreBtn");
+
+// Populate full gallery
+function populateFullGallery() {
+  fullGalleryGrid.innerHTML = "";
+  allGalleryImages.forEach((imageData, index) => {
+    const overlay = imageData.overlay;
+    const title = overlay.querySelector("h3").textContent;
+    const category = overlay.querySelector("span").textContent;
+
+    const galleryItem = document.createElement("div");
+    galleryItem.className = "full-gallery-item";
+    galleryItem.innerHTML = `
+      <img src="${imageData.img.src}" alt="${imageData.img.alt}" />
+      <div class="full-gallery-overlay">
+        <span>${category}</span>
+        <h4>${title}</h4>
+      </div>
+    `;
+
+    galleryItem.addEventListener("click", () => {
+      currentImageIndex = index;
+      closeFullGallery();
+      openLightbox(index);
+    });
+
+    fullGalleryGrid.appendChild(galleryItem);
+  });
+}
+
+function openFullGallery() {
+  populateFullGallery();
+  fullGalleryModal.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeFullGallery() {
+  fullGalleryModal.classList.remove("active");
+  document.body.style.overflow = "";
+}
+
+viewMoreBtn.addEventListener("click", openFullGallery);
+modalClose.addEventListener("click", closeFullGallery);
+
+fullGalleryModal.addEventListener("click", (e) => {
+  if (e.target === fullGalleryModal) {
+    closeFullGallery();
+  }
+});
+
 // Contact Form Submission with mailto
 const contactForm = document.getElementById("contactForm");
 
@@ -187,14 +341,14 @@ mobileMenu.querySelectorAll("a").forEach((link) => {
 // Menu toggle animation
 const style = document.createElement("style");
 style.textContent = `
-      .menu-toggle.active span:nth-child(1) {
-        transform: rotate(45deg) translate(6px, 6px);
-      }
-      .menu-toggle.active span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle.active span:nth-child(3) {
-        transform: rotate(-45deg) translate(6px, -6px);
-      }
-    `;
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+`;
 document.head.appendChild(style);
