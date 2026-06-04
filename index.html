@@ -349,23 +349,26 @@
       </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-      <div class="logo">SAARAHA</div>
-      <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">© 2025</a>
-      </div>
-      <div class="social-icons">
-        <a href="https://www.instagram.com/saaraha_studios?igsh=MXExMjZjbGI4M21ucQ==" title="Instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/share/1GcwtL3xS6/" title="Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </div>
-    </footer>
+  <div class="logo">SAARAHA</div>
+  <div class="footer-links">
+    <a href="privacy-policy.html">Privacy Policy</a>
+    <a href="terms-of-service.html">Terms of Service</a>
+    <a href="#">© <span id="year"></span> Saaraha Studios</a>
+  </div>
+  <div class="social-icons">
+    <a href="https://www.instagram.com/saaraha_studios?igsh=MXExMjZjbGI4M21ucQ==" target="_blank" rel="noopener noreferrer" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com/share/1GcwtL3xS6/" target="_blank" rel="noopener noreferrer" title="Facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
     <script src="script.js"></script>
   </body>
